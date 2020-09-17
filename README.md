@@ -1,4 +1,4 @@
-# Phase2.1DeveloperGuide
+# Phase2.1RDeveloperGuide
 4CE is an international consortium for electronic health record (EHR) data-driven studies of the COVID-19 pandemic. The goal of this effort—led by the i2b2 international academics users group—is to inform doctors, epidemiologists and the public about COVID-19 patients with data acquired through the health care process.
 
 You can learn more about the consortium, the data it is collecting, its members, and how to participate here:
@@ -9,3 +9,33 @@ This document is intended to give an overview of the software development guidel
 
 # Centralized vs. Federated Data Analyses
 
+The original work of the consortium, described in an [August 2020 Nature Digital Medicine article](https://www.nature.com/articles/s41746-020-00308-0), relied on individual clinical sites reporting aggregate data (case counts by day, summary lab measurement values, demographic breakdowns) about their COVID-19 patient population back to a single team for analysis. This approach had the obvious limitation that individual patient-level variables (comorbidities, medication histories, etc.) were not available for analysis. To enable analysis of such data without requiring that patient-level records be shared among institutions, we are introducing a federated analysis model.  
+
+Under this model, each site will run patient-level analyses locally on their own data, and report back the site's results for meta-analysis by the project lead.  All consortium members may propose analyses for which they would like to serve as a project lead.  If the proposal is approved by the 4CE steering committee, the project lead will be responsible for writing the software to create an R package to implement the analytic workflow on the 4CE standardized data model. 
+
+In order to create a consistent, homogenous computing environment where the analytic packages can be run independently at each of the participating sites, we are distributing a Docker image, which we will refer to as the 4CE Container.  This Docker image contains a pre-built environment that has been configured with all of the tools necessary to bootstrap individual analytic workflows. The container is intended to provide developers a consistent base layer for their software, it is *not* intended to contain every dependency required for every workflow (see below for additional details).
+
+The remainder of this document will provide an overview of the data model, the computational environment in which the analytic workflows will be executed, and guidelines for writing software in R to implemenet those workflows.
+
+# 4CE Data Extraction and Standarized Data Model
+## TODO: Griffin, others, please write a paragraph or a few here (or put them in a README.md on the appropriate GitHub repository and provide a link) to give an overview of the process and motivation for the standardized data model.  Please make sure to include something like this as a catch-all for sites that are doing their own data engineering:
+
+Those sites that do not implement an i2b2 instance that is compatible with the provided ETL process can still participate by creating a custom extraction routine against their own backend data warehouse, as long as the output conforms to the 4CE schema.
+
+# 4CE Computational Environment
+
+Docker, blah blah blah.
+
+# 4CE Software Engineering Guidelines
+
+Pointers to R reference material
+-creating packages
+-handling dependencies
+
+General best practices:
+Camel-casing
+Master as production branching
+
+# Fixed-interval "run all"
+
+# TODO: A lot of this material should be scraped out and replicated in a "Site User Guide", and incorporate instructions for running the individual analyses or checkpointed containers
