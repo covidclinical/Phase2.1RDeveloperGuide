@@ -24,15 +24,19 @@ Those sites that do not implement an i2b2 instance that is compatible with the p
 
 In order to create a consistent, homogenous computing environment where the analytic packages can be run independently at each of the participating sites, we are distributing a Docker image, which we will refer to as the 4CE Container.  The 4CE Container contains a pre-built environment that has been configured with all of the tools necessary to bootstrap individual analytic workflows. The container is intended to provide developers a consistent base layer for their software. It is *not* intended to contain every dependency required for every workflow. Analytic workflows that have dependencies that are not already available on the 4CE Container should declare those dependencies through the "Imports" section of "DESCRIPTION" file for the package that implements the workflow.  See: Software Engineering Guidelines below.
 
-A pre-built image is available to pull from DockerHub:
+A pre-built image of the 4CE Container is available to pull from DockerHub:
 
 https://hub.docker.com/repository/docker/dbmi/4ce-analysis/general
 
 And the respective Dockerfile is available on GitHub:
 
-https://github.com/covidclinical/Phase2.1_Docker_Analysis/blob/master/Dockerfile
+https://github.com/covidclinical/Phase2.1DockerAnalysis/blob/master/Dockerfile
 
-For additional details on working with the Docker container, including instructions for building the image on a bastion host and moving to an isolated host where the analyses will be run, see the [README](https://github.com/covidclinical/Phase2.1_Docker_Analysis) in the GitHub repository for the container definition.
+For additional details on working with the Docker container, including instructions for building the image on a bastion host and moving to an isolated host where the analyses will be run, see the [README](https://github.com/covidclinical/Phase2.1DockerAnalysis) in the GitHub repository for the container definition.
+
+An up-to-date (as of this writing) listing of the R packages available in the 4CE Container can be found in the container's GitHub repository:
+
+https://github.com/covidclinical/Phase2.1DockerAnalysis/blob/master/R_VERSIONS
 
 # 4CE Software Engineering Guidelines
 
