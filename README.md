@@ -58,14 +58,10 @@ Each of the analysis projects will be associated with several GitHub respositore
 This [R package](https://github.com/covidclinical/Phase2.1UtilitiesRPackage) contains these tools.  See the [README](https://github.com/covidclinical/Phase2.1UtilitiesRPackage) for additional details and a tutorial.
 
 ## Dependencies
-The 4CE Container comes [pre-built with many popular R packages](https://github.com/covidclinical/Phase2.1DockerAnalysis/blob/master/R_VERSIONS). 
-
--Imports
-
--contact us if R packages that your package depends on require installation of additional system libraries
+The 4CE Container comes pre-built with [many popular R packages](https://github.com/covidclinical/Phase2.1DockerAnalysis/blob/master/R_VERSIONS). All 4CE project packages should declare their dependencies throught the "Imports" section of the package's "DESCRIPTION" file. See [here])(https://r-pkgs.org/description.html#dependencies) for details about how this mechanism works in R. For any pacakges that are not available in the 4CE Container's pre-configured environment when your package is installed, R will attempt to automatically install the package. Developers should test this process in a clean 4CE Container instance before releasing their R package. If an R package upon which your software depends requires installation of a system library, please contact us, and we will work with you to get the library installed in the 4CE Container image.
 
 ## Reading input data in the 4CE Container environment
--mount point for input data
+All of the sites will run the 4CE Container with the container's `/4ceData` file system location mounted to the container host's storage where the site's exported standardized data files (see above for a description of the file schemas) reside. Your R package should only attempt to read from those locations to retrieve input data for an analysis.  See the container's [documentation](https://github.com/covidclinical/Phase2.1DockerAnalysis) for additional details on the storage mount.
 
 ## General best practices
 
@@ -77,5 +73,3 @@ Developers are free to structure the internal workings of their R packages as th
 
 ### Licensing
 Developers and project leads are free to choose their own preferred license. The consortium has decided to release much of its own work under the Apache License.
-
-# TODO: A lot of this material should be scraped out and replicated in a "Site User Guide", and incorporate instructions for running the individual analyses or checkpointed containers
